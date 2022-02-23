@@ -350,7 +350,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -369,12 +369,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da3135ed7ef455441af16f376c95afb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 0
-  maxThrust: 0
-  maxBoost: 0
-  turnSpeed: 0
-  scannerIsActive: 0
-  boostIsActive: 0
 --- !u!4 &91998622
 Transform:
   m_ObjectHideFlags: 0
@@ -384,7 +378,7 @@ Transform:
   m_GameObject: {fileID: 91998618}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3.1069825, y: 4.2128572, z: 4.2128572}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1448032716}
@@ -3528,7 +3522,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.7075472, g: 0.4514013, b: 0.2236116, a: 1}
+  m_Color: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3983,8 +3977,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1589990359}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.41, z: 0}
-  m_LocalScale: {x: 2.4584, y: 2.4584, z: 2.4584}
+  m_LocalPosition: {x: 0, y: -0.545, z: 0}
+  m_LocalScale: {x: 2.4584, y: 2.05891, z: 2.4584}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 91998622}
@@ -4032,7 +4026,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 3625043607559282579, guid: 19fb86013d8c24d6cb8410c0aadf30fa, type: 3}
-  m_Color: {r: 0.7058824, g: 0.45098042, b: 0.22352943, a: 1}
+  m_Color: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
