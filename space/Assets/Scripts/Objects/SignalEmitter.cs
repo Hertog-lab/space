@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class SignalEmitter : MonoBehaviour
 {
     public AudioSource audioSource;
     [SerializeField] AudioClip alienSignal;
@@ -23,8 +23,8 @@ public class Enemy : MonoBehaviour
     public void SetVolume(float angle)
     {
         if (!audioSource.isPlaying)
-        audioSource.Play();
-        
+            audioSource.Play();
+
         float convertedAngle;
         convertedAngle = angle / 80;
         convertedAngle = Mathf.Clamp(convertedAngle, 0.01f, 1);

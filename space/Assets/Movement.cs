@@ -13,22 +13,25 @@ public class Movement : MonoBehaviour
     float maxVelocity = 70;
     float turnSpeed;
 
-    
+    [SerializeField] List<AudioClip> audioClips = new List<AudioClip>();
+    [SerializeField] AudioSource thrusterAudio;
+    [SerializeField] AudioSource boostAudio;
+    Rigidbody2D rb;
+
     bool boostIsActive;
 
     Vector2 direction;
     Vector2 oldDirection;
 
-    Rigidbody2D rb;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
         thrust = 1500;
         maxThrust = thrust;
         maxBoost = thrust * 2;
         turnSpeed = 2;
-
 
     }
 
@@ -36,25 +39,14 @@ public class Movement : MonoBehaviour
     {
         ReadInputs();
 
-        if (!InfoManager.instance._scannerIsActive && x + y != 0)
+        if (!InfoManager.instance._scannerIsActive && y != 0 || x != 0) {
             Thrust();
-        
-        RotateShip();
-
-        //if (!scannerIsActive) {
-        //}
-        //else
-        //    UseScanner();
-
+        }
         ApplyBoost();
+        RotateShip();
         LimitVelocity();
 
 
-    }
-
-    private void UseScanner()
-    {
-        print("Scanning...");
     }
 
     private void LimitVelocity()
@@ -77,12 +69,12 @@ public class Movement : MonoBehaviour
             InfoManager.instance._scannerIsActive = true;
         else
             InfoManager.instance._scannerIsActive = false;
-        
+
         if (Input.GetKeyDown(KeyCode.Space))
             oldDirection = direction;
         if (Input.GetKeyUp(KeyCode.Space))
-        oldDirection = Vector2.zero;
-            
+            oldDirection = new Vector2(0, 0);
+
     }
 
     private void RotateShip()
@@ -111,10 +103,14 @@ public class Movement : MonoBehaviour
     private void ApplyBoost()
     {
         if (boostIsActive) {
+            if (!boostAudio.isPlaying)
+                boostAudio.Play();
+
             thrust += Time.deltaTime * 25;
             thrust = Mathf.Clamp(thrust, 0, maxBoost);
         }
         else
-            thrust = Mathf.Clamp(thrust, 0, maxThrust);
+            boostAudio.Stop();
+        thrust = Mathf.Clamp(thrust, 0, maxThrust);
     }
 }
