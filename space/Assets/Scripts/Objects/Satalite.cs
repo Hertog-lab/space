@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Satalite : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        InfoManager.instance._disconectedSatalites += 1;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        InfoManager.instance._connectedSatalites += 1;
     }
 }
