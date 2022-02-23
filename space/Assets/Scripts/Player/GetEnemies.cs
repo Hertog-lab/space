@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class GetEnemies : MonoBehaviour
 {
-    //list of enemies in range
-    private List<GameObject> enemies = new List<GameObject>();
+    private List<GameObject> enemies = new List<GameObject>();    //list of enemies in range
+    private List<GameObject> satalites = new List<GameObject>(); //list of satalites in range
 
-    //checks if enemies enter range
+    //checks if objects enter range
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //checks if it are enemies
+        //checks if the collision object is an enemy
         if (collision.GetComponent<Enemy>() == true)
         {
             enemies.Add(collision.gameObject);                      //adds enemies to the list
@@ -17,13 +17,33 @@ public class GetEnemies : MonoBehaviour
             enemies.Sort(SortFunc);                               //sorts the enemies by distance from the player
             InfoManager.instance._closestEnemy = enemies[0];     //sets the closest enemy variable in the InfoManager
         }
+
+        //checks if the collision object is a satalite
+        if (collision.GetComponent<Satalite>() == true)
+        {
+            satalites.Add(collision.gameObject);                        //adds satalites to the list
+            InfoManager.instance._sataliteAmount = satalites.Count;    //updates the satalite count
+            satalites.Sort(SortFunc);                                 //sortes the satalites by distance from the player
+            InfoManager.instance._closestSatalite = satalites[0];    //sets the closest satalite variable in the InfoManager
+        }
     }
 
     //checks if enemies exit range
     private void OnTriggerExit2D(Collider2D collision)
     {
-        enemies.Remove(collision.gameObject);                    //removes enemies form the list
-        InfoManager.instance._enemyAmount = enemies.Count;      //updates the enemy count
+        //checks if the collision object is an enemy
+        if (collision.GetComponent<Enemy>() == true)
+        {
+            enemies.Remove(collision.gameObject);                    //removes the enemy form the list
+            InfoManager.instance._enemyAmount = enemies.Count;      //updates the enemy count
+        }
+
+        //checks if the collision object is a satalite
+        if (collision.GetComponent<Satalite>() == true)
+        {
+            satalites.Remove(collision.gameObject);                    //removes the satalite from the list
+            InfoManager.instance._sataliteAmount = satalites.Count;   //updates the satalite count
+        }
     }
 
     //as named this function is used to sort the enemies from far away to close
