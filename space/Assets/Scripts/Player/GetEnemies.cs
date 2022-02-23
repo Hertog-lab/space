@@ -21,24 +21,24 @@ public class GetEnemies : MonoBehaviour
         if (InfoManager.instance._scannerIsActive) {
             if (scannerTargets != null) {
                 for (int i = 0; i < scannerTargets.Length; i++) {
-                float targetAngle = GetAngleFromPlayer(scannerTargets[i].collider.gameObject);
-                if (targetAngle < 90) {
-                    scannerTargets[i].collider.GetComponent<Enemy>().SetVolume(GetAngleFromPlayer(scannerTargets[i].collider.gameObject));
+                    float targetAngle = GetAngleFromPlayer(scannerTargets[i].collider.gameObject);
+                    if (targetAngle < 90) {
+                        scannerTargets[i].collider.GetComponent<SignalEmitter>().SetVolume(GetAngleFromPlayer(scannerTargets[i].collider.gameObject));
 
-                    if (scannerTargets[i].collider.GetComponent<Enemy>() == true) {
-                        enemies.Add(scannerTargets[i].collider.gameObject);                      //adds enemies to the list
-                        InfoManager.instance._enemyAmount = enemies.Count;                  //updates the enemy count
-                        InfoManager.instance._closestEnemy = enemies[0];                   //sets the closest enemy variable in the InfoManager
+                        if (scannerTargets[i].collider.GetComponent<SignalEmitter>() == true) {
+                            enemies.Add(scannerTargets[i].collider.gameObject);                      //adds enemies to the list
+                            InfoManager.instance._enemyAmount = enemies.Count;                  //updates the enemy count
+                            InfoManager.instance._closestEnemy = enemies[0];                   //sets the closest enemy variable in the InfoManager
+                        }
+
+                        //checks if the collision object is a satalite
+                        if (scannerTargets[i].collider.GetComponent<Satalite>() == true) {
+                            satalites.Add(scannerTargets[i].collider.gameObject);            //adds satalites to the list
+                            InfoManager.instance._sataliteAmount = satalites.Count;    //updates the satalite count
+                            InfoManager.instance._closestSatalite = satalites[0];     //sets the closest satalite variable in the InfoManager
+                        }
+
                     }
-
-                    //checks if the collision object is a satalite
-                    if (scannerTargets[i].collider.GetComponent<Satalite>() == true) {
-                        satalites.Add(scannerTargets[i].collider.gameObject);            //adds satalites to the list
-                        InfoManager.instance._sataliteAmount = satalites.Count;    //updates the satalite count
-                        InfoManager.instance._closestSatalite = satalites[0];     //sets the closest satalite variable in the InfoManager
-                    }
-
-                }
                 }
 
             }
