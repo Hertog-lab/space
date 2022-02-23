@@ -501,7 +501,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 639fa3dd290ac8c41b95daacf5f920ce, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -3382,7 +3382,7 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 0.75
   MinDistance: 93.52
   MaxDistance: 500
   Pan2D: 0
@@ -3673,7 +3673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nothing: {fileID: 646901892}
-  scanRadius: 100
+  scanRadius: 500
 --- !u!50 &1215476124
 Rigidbody2D:
   serializedVersion: 4
@@ -6097,7 +6097,7 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 0.75
   MinDistance: 18.49
   MaxDistance: 536.7
   Pan2D: 0

@@ -37,23 +37,27 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
+        if (thrusterAudio.volume < 1)
+            thrusterAudio.volume += 0.1f;
+
         ReadInputs();
 
-        if (!InfoManager.instance._scannerIsActive && y != 0 || x != 0) {
+        if (!InfoManager.instance._scannerIsActive) {
             Thrust();
         }
+
         ApplyBoost();
         RotateShip();
         LimitVelocity();
 
+        if (boostIsActive && x != 0 || y != 0)
+            boostAudio.volume = 1;
+        
+        else
+            boostAudio.volume = 0.1f;
 
     }
 
-    private void LimitVelocity()
-    {
-        if (rb.velocity.magnitude > maxVelocity)
-            rb.AddForce(-rb.velocity * (rb.velocity.magnitude - maxVelocity));
-    }
 
     private void ReadInputs()
     {
@@ -65,32 +69,33 @@ public class Movement : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.LeftShift))
             boostIsActive = false;
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space)) {
             InfoManager.instance._scannerIsActive = true;
-        else
+            thrusterAudio.pitch = 0.6f;
+        }
+        else {
             InfoManager.instance._scannerIsActive = false;
+            thrusterAudio.pitch = 1;
+        }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-            oldDirection = direction;
-        if (Input.GetKeyUp(KeyCode.Space))
-            oldDirection = new Vector2(0, 0);
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            turnSpeed = 0.8f;
+        }
+        if (Input.GetKeyUp(KeyCode.Space)) {
+            turnSpeed = 2;
+
+        }
 
     }
 
     private void RotateShip()
     {
-        if (!InfoManager.instance._scannerIsActive) {
-            direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-            direction.Normalize();
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, turnSpeed * Time.deltaTime);
-        }
-        if (InfoManager.instance._scannerIsActive) {
-            float angle = Mathf.Atan2(oldDirection.y, oldDirection.x) * Mathf.Rad2Deg;
-            Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
-            transform.rotation = Quaternion.Slerp(transform.rotation, transform.rotation * rotation, turnSpeed * Time.deltaTime);
-        }
+        direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        direction.Normalize();
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, turnSpeed * Time.deltaTime);
+
     }
 
     private void Thrust()
@@ -103,14 +108,15 @@ public class Movement : MonoBehaviour
     private void ApplyBoost()
     {
         if (boostIsActive) {
-            if (!boostAudio.isPlaying)
-                boostAudio.Play();
-
             thrust += Time.deltaTime * 25;
             thrust = Mathf.Clamp(thrust, 0, maxBoost);
         }
         else
-            boostAudio.Stop();
-        thrust = Mathf.Clamp(thrust, 0, maxThrust);
+            thrust = Mathf.Clamp(thrust, 0, maxThrust);
+    }
+    private void LimitVelocity()
+    {
+        if (rb.velocity.magnitude > maxVelocity)
+            rb.AddForce(-rb.velocity * (rb.velocity.magnitude - maxVelocity));
     }
 }
