@@ -10,12 +10,18 @@ public class CameraController : MonoBehaviour
     Vector3 targetPos;
     float cameraRotation;
 
+    private void Start()
+    {
+        
+    }
+
     public void Update()
     {
         targetPos = new Vector3(target.transform.position.x, target.transform.position.y, -10);
         transform.position = targetPos;
-        transform.rotation = Quaternion.Lerp(transform.rotation, target.rotation, 0.001f);
 
+        if (!target.GetComponent<Movement>().scannerIsActive)
+            transform.rotation = Quaternion.Lerp(transform.rotation, target.rotation, 0.001f);
     }
 
 }
