@@ -40,7 +40,6 @@ public class GetEnemies : MonoBehaviour
 
                     }
                 }
-
             }
         }
         else
