@@ -13,7 +13,7 @@ public class Movement : MonoBehaviour
     float maxVelocity = 70;
     float turnSpeed;
 
-    public bool scannerIsActive;
+    
     bool boostIsActive;
 
     Vector2 direction;
@@ -36,7 +36,7 @@ public class Movement : MonoBehaviour
     {
         ReadInputs();
 
-        if (!scannerIsActive && x + y != 0)
+        if (!InfoManager.instance._scannerIsActive && x + y != 0)
             Thrust();
         
         RotateShip();
@@ -72,26 +72,29 @@ public class Movement : MonoBehaviour
             boostIsActive = true;
         if (Input.GetKeyUp(KeyCode.LeftShift))
             boostIsActive = false;
-        
+
         if (Input.GetKey(KeyCode.Space))
-            scannerIsActive = true;
+            InfoManager.instance._scannerIsActive = true;
         else
-            scannerIsActive = false;
+            InfoManager.instance._scannerIsActive = false;
+        
         if (Input.GetKeyDown(KeyCode.Space))
             oldDirection = direction;
+        if (Input.GetKeyUp(KeyCode.Space))
+        oldDirection = Vector2.zero;
             
     }
 
     private void RotateShip()
     {
-        if (!scannerIsActive) {
+        if (!InfoManager.instance._scannerIsActive) {
             direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             direction.Normalize();
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, turnSpeed * Time.deltaTime);
         }
-        if (scannerIsActive) {
+        if (InfoManager.instance._scannerIsActive) {
             float angle = Mathf.Atan2(oldDirection.y, oldDirection.x) * Mathf.Rad2Deg;
             Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
             transform.rotation = Quaternion.Slerp(transform.rotation, transform.rotation * rotation, turnSpeed * Time.deltaTime);

@@ -10,6 +10,7 @@ public class InfoManager : MonoBehaviour
     public int _sataliteAmount;           //used to show how many satalites are nearby
     public GameObject _closestEnemy;     //stores the closest enemy
     public GameObject _closestSatalite; //stores the closest satalite
+    public bool _scannerIsActive;
 
     private void Awake()
     {
