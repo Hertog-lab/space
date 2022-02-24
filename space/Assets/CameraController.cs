@@ -11,8 +11,9 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        if (targetPos == null)
-            targetPos = new Vector3(0, 0, 0);
+        if (target == null)
+            target = transform;
+            
     }
 
     public void Update()

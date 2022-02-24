@@ -41,6 +41,10 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.R))
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
         InfoManager.instance._currentPlayerVelocity = rb.velocity;
         if (thrusterAudio.volume < 1)
             thrusterAudio.volume += 0.1f;
