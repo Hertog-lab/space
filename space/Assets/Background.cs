@@ -11,9 +11,10 @@ public class Background : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        transform.position = Vector3.Lerp(transform.position, new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, +10), 0.005f);
+        //transform.position = Vector3.Lerp(transform.position, new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, +10), 0.005f);
+        transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, +10);
         
     }
 }

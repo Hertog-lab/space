@@ -43,8 +43,7 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-
-        Debug.Log(InfoManager.instance._hitPoints);
+        InfoManager.instance._currentPlayerVelocity = rb.velocity;
         if (thrusterAudio.volume < 1)
             thrusterAudio.volume += 0.1f;
 
