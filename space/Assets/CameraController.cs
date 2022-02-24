@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField]
-    Transform target;
+    public Transform target;
 
     Vector3 targetPos;
     float cameraRotation;

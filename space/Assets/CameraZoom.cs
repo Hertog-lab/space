@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class CameraZoom : MonoBehaviour
 {
-    [SerializeField]
-    Rigidbody2D targetRB;
+    public Rigidbody2D targetRB;
     private void LateUpdate()
     {
         if (targetRB.velocity.magnitude < 40)
