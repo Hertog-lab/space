@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ParallaxStars : MonoBehaviour
 {
-        [SerializeField, Range(0,1)] float scrollSpeed;
+        [SerializeField, Range(-1,1)] float scrollSpeed;
 
     void Start()
     {

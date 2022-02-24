@@ -16,6 +16,7 @@ public class InfoManager : MonoBehaviour
     public Transform _lastPlayerLocation;          //gets updated to the last player location
     public Vector3 _currentPlayerVelocity;        //gets current velocity for the parallax effect
     public int _hitPoints;                       //player hitpoints
+    public float _fixTimer;
 
 
     private void Awake()

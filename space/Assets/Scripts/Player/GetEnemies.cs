@@ -31,7 +31,7 @@ public class GetEnemies : MonoBehaviour
                         }
 
                         //checks if the collision object is a satalite
-                        if (scannerTargets[i].collider.GetComponent<Satalite>() == true) {
+                        if (scannerTargets[i].collider.GetComponent<Satellite>() == true) {
                             satalites.Add(scannerTargets[i].collider.gameObject);            //adds satalites to the list
                             InfoManager.instance._sataliteAmount = satalites.Count;    //updates the satalite count
                             InfoManager.instance._closestSatalite = satalites[0];     //sets the closest satalite variable in the InfoManager
