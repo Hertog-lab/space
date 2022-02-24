@@ -5,16 +5,18 @@ using UnityEngine.UI;
 
 public class HealthbarManager : MonoBehaviour
 {
+    private bool isSliderSet;
     private Slider slider;
-    void Start()
-    {
-        slider = GetComponent<Slider>();
-        slider.maxValue = InfoManager.instance._sataliteAmount;
-        slider.value = 0;
-    }
 
     private void Update()
     {
+        if (isSliderSet != true)
+        {
+            slider = GetComponent<Slider>();
+            slider.minValue = 0;
+            slider.maxValue = InfoManager.instance._disconectedSatalites;
+            slider.value = 0;
+        }
         slider.value += InfoManager.instance._connectedSatalites;
     }
 }

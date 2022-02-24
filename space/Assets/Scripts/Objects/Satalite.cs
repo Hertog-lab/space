@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class Satalite : MonoBehaviour
 {
-    void Awake()
+    private bool isFixed;
+    void Start()
     {
         InfoManager.instance._disconectedSatalites += 1;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        InfoManager.instance._connectedSatalites += 1;
+        if (isFixed != true)
+        {
+            if (collision.GetComponent<Movement>() == true)
+            {
+                InfoManager.instance._connectedSatalites += 1;
+                isFixed = true;
+            }
+        }
     }
 }
