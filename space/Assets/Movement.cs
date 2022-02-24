@@ -42,13 +42,8 @@ public class Movement : MonoBehaviour
     private void Update()
     {
 
-        Debug.Log(InfoManager.instance._connectedSatalites - InfoManager.instance._connectedSatalites);
-
         if (InfoManager.instance._connectedSatalites == InfoManager.instance._disconectedSatalites && Input.GetKey(KeyCode.R))
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
-        if (Input.GetKeyDown(KeyCode.F))
-            InfoManager.instance._disconectedSatalites--;
 
         InfoManager.instance._currentPlayerVelocity = rb.velocity;
         if (thrusterAudio.volume < 1)
