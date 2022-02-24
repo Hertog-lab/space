@@ -525,14 +525,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Satelite
       objectReference: {fileID: 0}
-    - target: {fileID: 3563152467522886612, guid: 72d9c6756ef14c040b1dc2f8fc700f8a, type: 3}
-      propertyPath: m_Radius
-      value: 2.37
-      objectReference: {fileID: 0}
-    - target: {fileID: 3563152467522886612, guid: 72d9c6756ef14c040b1dc2f8fc700f8a, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3563152467522886617, guid: 72d9c6756ef14c040b1dc2f8fc700f8a, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1458,18 +1450,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 810622739421884349, guid: 8b3c185a24e5f954db49822b72a915ac, type: 3}
-      propertyPath: m_Value
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 810622739421884349, guid: 8b3c185a24e5f954db49822b72a915ac, type: 3}
-      propertyPath: m_MaxValue
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 810622739421884349, guid: 8b3c185a24e5f954db49822b72a915ac, type: 3}
-      propertyPath: m_WholeNumbers
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 810622740023454173, guid: 8b3c185a24e5f954db49822b72a915ac, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
