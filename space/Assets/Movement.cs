@@ -14,8 +14,10 @@ public class Movement : MonoBehaviour
     float turnSpeed;
 
     [SerializeField] List<AudioClip> audioClips = new List<AudioClip>();
+    [SerializeField] List<AudioClip> collisionClips = new List<AudioClip>();
     [SerializeField] AudioSource thrusterAudio;
     [SerializeField] AudioSource boostAudio;
+    [SerializeField] AudioSource collisionAudio;
     Rigidbody2D rb;
 
     bool boostIsActive;
@@ -37,6 +39,7 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
+
         if (thrusterAudio.volume < 1)
             thrusterAudio.volume += 0.1f;
 
@@ -85,7 +88,6 @@ public class Movement : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.Space)) {
             turnSpeed = 2;
-
         }
 
     }
@@ -93,6 +95,7 @@ public class Movement : MonoBehaviour
     private void RotateShip()
     {
         direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        Debug.Log(direction);
         direction.Normalize();
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
@@ -121,4 +124,12 @@ public class Movement : MonoBehaviour
         if (rb.velocity.magnitude > maxVelocity)
             rb.AddForce(-rb.velocity * (rb.velocity.magnitude - maxVelocity));
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        int clip = UnityEngine.Random.Range(0, collisionClips.Count - 1);
+        if (!collisionAudio.isPlaying)
+            collisionAudio.PlayOneShot(collisionClips[clip]);
+    }
+
 }
