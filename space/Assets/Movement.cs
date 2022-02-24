@@ -20,7 +20,6 @@ public class Movement : MonoBehaviour
     [SerializeField] AudioSource boostAudio;
     [SerializeField] AudioSource collisionAudio;
     Rigidbody2D rb;
-    SpriteRenderer spriteRenderer;
 
     bool boostIsActive;
 
@@ -31,7 +30,6 @@ public class Movement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
         Camera.main.GetComponent<CameraController>().target = transform;
         Camera.main.GetComponent<CameraZoom>().targetRB = rb;
         thrust = 500;

@@ -14,8 +14,7 @@ public class GetEnemies : MonoBehaviour
 
     private void Update()
     {
-        enemies.Sort(AngleSortFunc);
-        satalites.Sort(AngleSortFunc);
+        
 
         RaycastHit2D[] scannerTargets = Physics2D.CircleCastAll(transform.position, scanRadius, Vector2.zero);
         if (InfoManager.instance._scannerIsActive) {
@@ -78,6 +77,10 @@ public class GetEnemies : MonoBehaviour
 
 
     /*
+     * 
+     * //enemies.Sort(AngleSortFunc);
+        //satalites.Sort(AngleSortFunc);
+
         //checks if objects enter range
     private void OnTriggerEnter2D(Collider2D collision)
     {
