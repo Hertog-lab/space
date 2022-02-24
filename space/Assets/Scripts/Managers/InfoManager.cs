@@ -13,7 +13,8 @@ public class InfoManager : MonoBehaviour
     public bool _scannerIsActive;           //used to check if the scanner is active
     public int _disconectedSatalites;      //used to check how many satalites the player still needs to connect
     public int _connectedSatalites;       //used to updates the progressbar
-    public Transform lastPlayerLocation; //gets updated to the last player location
+    public Transform _lastPlayerLocation; //gets updated to the last player location
+    public int _hitPoints;               //player hitpoints
 
     private void Awake()
     {

@@ -6,7 +6,7 @@ public class EnemyMovement : MonoBehaviour
 {
     Rigidbody2D rb;
     Transform target;
-    float speed = 80;
+    float speed = 160;
     float maxVelocity = 80;
 
 
@@ -20,7 +20,7 @@ public class EnemyMovement : MonoBehaviour
 
 
         if (InfoManager.instance._scannerIsActive) {
-            target = InfoManager.instance.lastPlayerLocation;
+            target = InfoManager.instance._lastPlayerLocation;
             Rotate();
         }
         else {

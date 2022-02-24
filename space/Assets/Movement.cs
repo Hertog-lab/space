@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class Movement : MonoBehaviour
     [SerializeField] AudioSource boostAudio;
     [SerializeField] AudioSource collisionAudio;
     Rigidbody2D rb;
+    SpriteRenderer spriteRenderer;
 
     bool boostIsActive;
 
@@ -29,6 +31,7 @@ public class Movement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         Camera.main.GetComponent<CameraController>().target = transform;
         Camera.main.GetComponent<CameraZoom>().targetRB = rb;
         thrust = 500;
@@ -41,6 +44,7 @@ public class Movement : MonoBehaviour
     private void Update()
     {
 
+        Debug.Log(InfoManager.instance._hitPoints);
         if (thrusterAudio.volume < 1)
             thrusterAudio.volume += 0.1f;
 
@@ -50,7 +54,7 @@ public class Movement : MonoBehaviour
             Thrust();
         }
         else
-            InfoManager.instance.lastPlayerLocation = transform;
+            InfoManager.instance._lastPlayerLocation = transform;
 
         ApplyBoost();
         RotateShip();
@@ -96,7 +100,6 @@ public class Movement : MonoBehaviour
     private void RotateShip()
     {
         direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        Debug.Log(direction);
         direction.Normalize();
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
@@ -131,6 +134,11 @@ public class Movement : MonoBehaviour
         int clip = UnityEngine.Random.Range(0, collisionClips.Count - 1);
         if (!collisionAudio.isPlaying)
             collisionAudio.PlayOneShot(collisionClips[clip]);
+        if (collision.transform.GetComponent<EnemyMovement>()) {
+            InfoManager.instance._hitPoints--;
+            if (InfoManager.instance._hitPoints < 1)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
 }

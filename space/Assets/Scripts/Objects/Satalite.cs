@@ -21,8 +21,11 @@ public class Satalite : MonoBehaviour
             {
                 InfoManager.instance._connectedSatalites += 1;
                 isFixed = true;
-                //TODO Add happy fixing sound!
-                audioSource.enabled = false;
+                if (InfoManager.instance._hitPoints < 3) {
+                    InfoManager.instance._hitPoints++;
+                    //TODO Add happy fixing sound!
+                    audioSource.enabled = false;
+                }
             }
         }
     }
