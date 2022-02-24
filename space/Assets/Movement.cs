@@ -42,9 +42,6 @@ public class Movement : MonoBehaviour
     private void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.R))
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
         InfoManager.instance._currentPlayerVelocity = rb.velocity;
         if (thrusterAudio.volume < 1)
             thrusterAudio.volume += 0.1f;
@@ -138,7 +135,7 @@ public class Movement : MonoBehaviour
         if (collision.transform.GetComponent<EnemyMovement>()) {
             InfoManager.instance._hitPoints--;
             if (InfoManager.instance._hitPoints < 1)
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 
