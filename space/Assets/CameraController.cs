@@ -21,7 +21,7 @@ public class CameraController : MonoBehaviour
         transform.position = targetPos;
 
         if (!InfoManager.instance._scannerIsActive)
-            transform.rotation = Quaternion.Lerp(transform.rotation, target.rotation, 0.001f);
+            transform.rotation = Quaternion.Lerp(transform.rotation, target.rotation, 0.005f);
     }
 
 }
