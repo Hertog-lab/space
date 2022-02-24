@@ -204,9 +204,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0762b6790c9a9db41bb7f6d3211ea1c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 8
-  gridY: 8
-  offset: 25
+  gridX: 4
+  gridY: 4
+  offset: 50
   gridOrigin: {x: 0, y: 0}
 --- !u!4 &1863704830
 Transform:
