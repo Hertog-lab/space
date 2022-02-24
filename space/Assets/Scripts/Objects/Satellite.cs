@@ -6,6 +6,7 @@ public class Satellite : MonoBehaviour
 {
     private SpriteRenderer sr;
     private AudioSource audioSource;
+    [SerializeField] private AudioSource fixSoundSource;
     public bool isFixed;
     void Start()
     {
@@ -42,6 +43,7 @@ public class Satellite : MonoBehaviour
         InfoManager.instance._fixTimer = 0;
         InfoManager.instance._connectedSatalites += 1;
         isFixed = true;
+        fixSoundSource.Play();
         audioSource.enabled = false;
         if (InfoManager.instance._hitPoints < 3) {
             InfoManager.instance._hitPoints++;

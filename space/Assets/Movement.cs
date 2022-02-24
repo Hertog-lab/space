@@ -42,6 +42,12 @@ public class Movement : MonoBehaviour
     private void Update()
     {
 
+        if (InfoManager.instance._disconectedSatalites <= 0 && Input.GetKey(KeyCode.R))
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+        if (Input.GetKeyDown(KeyCode.F))
+            InfoManager.instance._disconectedSatalites--;
+
         InfoManager.instance._currentPlayerVelocity = rb.velocity;
         if (thrusterAudio.volume < 1)
             thrusterAudio.volume += 0.1f;
@@ -51,8 +57,10 @@ public class Movement : MonoBehaviour
         if (!InfoManager.instance._scannerIsActive) {
             Thrust();
         }
-        else
+        else {
             InfoManager.instance._lastPlayerLocation = transform;
+            Brake();
+        }
 
         ApplyBoost();
         RotateShip();
@@ -66,6 +74,11 @@ public class Movement : MonoBehaviour
 
     }
 
+    private void Brake()
+    {
+        if (rb.velocity.magnitude > 0)
+            rb.AddForce(-rb.velocity * 100 * Time.deltaTime);
+    }
 
     private void ReadInputs()
     {
