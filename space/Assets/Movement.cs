@@ -45,6 +45,8 @@ public class Movement : MonoBehaviour
         if (!InfoManager.instance._scannerIsActive) {
             Thrust();
         }
+        else
+            InfoManager.instance.lastPlayerLocation = transform;
 
         ApplyBoost();
         RotateShip();
