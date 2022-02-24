@@ -42,7 +42,9 @@ public class Movement : MonoBehaviour
     private void Update()
     {
 
-        if (InfoManager.instance._disconectedSatalites <= 0 && Input.GetKey(KeyCode.R))
+        Debug.Log(InfoManager.instance._connectedSatalites - InfoManager.instance._connectedSatalites);
+
+        if (InfoManager.instance._connectedSatalites == InfoManager.instance._disconectedSatalites && Input.GetKey(KeyCode.R))
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
         if (Input.GetKeyDown(KeyCode.F))

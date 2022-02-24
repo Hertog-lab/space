@@ -11,9 +11,9 @@ public class WinScreenController : MonoBehaviour
         transform.GetChild(10).gameObject.SetActive(false);
     }
 
-    private void Update()
+    private void LateUpdate()
     {
-        if (InfoManager.instance._disconectedSatalites < 1)
+        if (InfoManager.instance._connectedSatalites == InfoManager.instance._disconectedSatalites)
             transform.GetChild(10).gameObject.SetActive(true);
 
     }

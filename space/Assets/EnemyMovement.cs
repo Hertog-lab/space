@@ -6,7 +6,7 @@ public class EnemyMovement : MonoBehaviour
 {
     Rigidbody2D rb;
     Transform target;
-    float speed = 160;
+    float speed = 180;
     float maxVelocity = 80;
 
 
@@ -60,6 +60,6 @@ public class EnemyMovement : MonoBehaviour
     private void Brake()
     {
         if (rb.velocity.magnitude > 0)
-            rb.AddForce(-rb.velocity * 5 * Time.deltaTime);
+            rb.AddForce(-rb.velocity * 3 * Time.deltaTime);
     }
 }

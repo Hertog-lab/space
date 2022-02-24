@@ -39,7 +39,6 @@ public class Satellite : MonoBehaviour
     }
     private void FixSatellite()
     {
-
         InfoManager.instance._fixTimer = 0;
         InfoManager.instance._connectedSatalites += 1;
         isFixed = true;
