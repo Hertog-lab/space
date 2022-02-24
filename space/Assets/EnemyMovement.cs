@@ -21,7 +21,7 @@ public class EnemyMovement : MonoBehaviour
         Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 10 * Time.deltaTime);
 
-        rb.AddForce(transform.up * speed - angle * Time.deltaTime, ForceMode2D.Force);
+        rb.AddForce(transform.up * (speed - angle / 18) * Time.deltaTime, ForceMode2D.Force);
 
     }
 }
