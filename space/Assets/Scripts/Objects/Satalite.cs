@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Satalite : MonoBehaviour
 {
-    private bool isFixed;
+
+    AudioSource audioSource;
+    public bool isFixed;
     void Start()
     {
         InfoManager.instance._disconectedSatalites += 1;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -18,6 +21,8 @@ public class Satalite : MonoBehaviour
             {
                 InfoManager.instance._connectedSatalites += 1;
                 isFixed = true;
+                //TODO Add happy fixing sound!
+                audioSource.enabled = false;
             }
         }
     }
