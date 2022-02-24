@@ -5,7 +5,7 @@ using UnityEngine;
 public class SignalEmitter : MonoBehaviour
 {
     public AudioSource audioSource;
-    [SerializeField] AudioClip alienSignal;
+    [SerializeField] AudioClip signal;
     float volumeModifier;
 
     void Start()

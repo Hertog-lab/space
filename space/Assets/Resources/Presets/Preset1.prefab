@@ -98,6 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ebe454f2dbdc884082ed845d963d04b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
+  alienSignal: {fileID: 0}
 --- !u!58 &24966316354676033
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -188,7 +190,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ede7861d0b3496b40859eb70fc913ed1, type: 3}
   m_Color: {r: 0.5849056, g: 0.37796715, b: 0.30624774, a: 1}
   m_FlipX: 0
   m_FlipY: 0
