@@ -4,13 +4,24 @@ using UnityEngine;
 
 public class Satalite : MonoBehaviour
 {
-
-    AudioSource audioSource;
+    private SpriteRenderer sr;
+    private AudioSource audioSource;
     public bool isFixed;
     void Start()
     {
         InfoManager.instance._disconectedSatalites += 1;
         audioSource = GetComponent<AudioSource>();
+        sr = GetComponent<SpriteRenderer>();
+    }
+
+    private void Update()
+    {
+        if (InfoManager.instance._scannerIsActive)
+        {
+             sr.enabled = true;
+        } else {
+            sr.enabled = false;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
