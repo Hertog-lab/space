@@ -31,7 +31,7 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         Camera.main.GetComponent<CameraController>().target = transform;
         Camera.main.GetComponent<CameraZoom>().targetRB = rb;
-        thrust = 1500;
+        thrust = 500;
         maxThrust = thrust;
         maxBoost = thrust * 2;
         turnSpeed = 2;
